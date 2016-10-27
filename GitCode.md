@@ -1,36 +1,66 @@
 # GitCode
 
 把当前目录变成git仓库：git init  
+
 把文件添加到仓库：git add [文件名]  //注：可添加多个文件，以空格隔开
+
 把文件提交到仓库：git commit -m "提交说明"
+
 查看当前仓库的状态：git status  //nothing to commit (working directory clean) 表示没有要提交的修改
+
 查看某个文件修改的差异：git diff [文件名]
+
 查看每次提交的历史：git log  //如果嫌输出的信息过多，可以添加--pretty=oneline
+
 查看分支的合并情况：git log --graph --pretty=oneline --abbrev-commit
+
 git 回退版本：git reset --hard HEAD^ 或回退到指定commit id ep:git reset --hard fb67e35
+
 查询之前提交的命令：git reflog //可以查看到近期提交的commit id
+
 把暂存区的修改撤销掉（unstage），重新放回工作区：git reset HEAD [文件名]
+
 丢弃工作区的修改或者删除的文件还原到工作区：git checkout -- [文件名]
+
 删除文件：git rm [文件名]
+
 关联远程仓库：git remote add origin [仓库地址]
+
 提交本地仓库代码到远程：git push -u origin master
+
 由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令
 这样：git push origin master
+
 从远程克隆：git clone [远程仓库地址]
+
 切换分支：git checkout [分支名]
+
 创建并切换分支:git checkout -b [分支名] 相当于 git branch [分支名]；git checkout [分支名]
+
 查看当前分支：git branch
+
 删除分支:git branch -d [分支名]
+
 没有合并删除分支：>git branch -D [分支名]
+
 合并到当前分支：git merge [其他分支分支名] ；git merge --no-ff -m "提交说明" dev
+
 合并分支时，加上--no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。
+
 存储工作空间：git stash //保存现场
+
 查看工作现场：git stash list
-恢复工作现场：一是用git stash apply恢复，但是恢复后，stash内容并不删除，你需要用git stash drop来删除；另一种方式是用git stash pop，恢复的同时把stash内容也删了：
+
+恢复工作现场：一是用git stash apply恢复，但是恢复后，stash内容并不删除，你需要用git stash drop来删除；另一种方式是用git stash pop，恢复的同时把stash内容也删了
+
 查看远程仓库信息：git remote 添加-v显示更详细信息
+
 在本地创建和远程分支对应的分支，使用git checkout -b [分支名] origin/[分支名]，本地和远程分支的名称最好一致；
+
 建立本地分支和远程分支的关联，使用git branch --set-upstream [分支名] origin/[分支名]；
+
 添加标签：切换到需要打tag的分支，执行 ：git tag [tag] el:git tag v1.0
+
 查看标签：git tag
 
 **工作区和暂存区理解**
