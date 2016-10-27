@@ -21,11 +21,19 @@ git 回退版本：git reset --hard HEAD^ 或回退到指定commit id ep:git res
 创建并切换分支:git checkout -b [分支名] 相当于 git branch [分支名]；git checkout [分支名]
 查看当前分支：git branch
 删除分支:git branch -d [分支名]
+没有合并删除分支：>git branch -D [分支名]
 合并到当前分支：git merge [其他分支分支名] ；git merge --no-ff -m "提交说明" dev
 合并分支时，加上--no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。
 存储工作空间：git stash //保存现场
+查看工作现场：git stash list
+恢复工作现场：一是用git stash apply恢复，但是恢复后，stash内容并不删除，你需要用git stash drop来删除；另一种方式是用git stash pop，恢复的同时把stash内容也删了：
+查看远程仓库信息：git remote 添加-v显示更详细信息
+在本地创建和远程分支对应的分支，使用git checkout -b [分支名] origin/[分支名]，本地和远程分支的名称最好一致；
+建立本地分支和远程分支的关联，使用git branch --set-upstream [分支名] origin/[分支名]；
+添加标签：切换到需要打tag的分支，执行 ：git tag [tag] el:git tag v1.0
+查看标签：git tag
 
-工作区和暂存区理解
+**工作区和暂存区理解**
 
 版本库（Repository）
 
@@ -34,7 +42,7 @@ Git的版本库里存了很多东西，其中最重要的就是称为stage（或
 
 ![理解](http://www.liaoxuefeng.com/files/attachments/001384907702917346729e9afbf4127b6dfbae9207af016000/0)
 
-分支策略
+**分支策略**
 
 在实际开发中，我们应该按照几个基本原则进行分支管理：
 
@@ -47,3 +55,11 @@ Git的版本库里存了很多东西，其中最重要的就是称为stage（或
 所以，团队合作的分支看起来就像这样：
 
 ![branch](http://www.liaoxuefeng.com/files/attachments/001384909239390d355eb07d9d64305b6322aaf4edac1e3000/0)
+
+**如何解决远程冲突**
+
+1. git pull 从远程啦取最新的代码
+2. 在本地解决冲突，合并
+3. 提交代码到远程
+
+ 注：git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream branch-name origin/branch-name
