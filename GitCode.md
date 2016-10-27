@@ -59,7 +59,17 @@ git 回退版本：git reset --hard HEAD^ 或回退到指定commit id ep:git res
 
 建立本地分支和远程分支的关联，使用git branch --set-upstream [分支名] origin/[分支名]；
 
-添加标签：切换到需要打tag的分支，执行 ：git tag [tag] el:git tag v1.0
+添加标签：切换到需要打tag的分支，执行 ：git tag [tag] 例:git tag v1.0
+
+删除标签：git tag -d [标签名]
+
+推送标签到远程:git push origin <tagname>
+
+推送本地所有标签到远程：git push origin --tags
+
+删除远程标签：git push origin :refs/tags/[tagname]
+
+如果忘记了添加标签，可以通过git log 查看commitId 然后打标签 例:git tag v0.9 [commitId]
 
 查看标签：git tag
 
