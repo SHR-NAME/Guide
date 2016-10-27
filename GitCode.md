@@ -9,7 +9,9 @@
 git 回退版本：git reset --hard HEAD^ 或回退到指定commit id ep:git reset --hard fb67e35
 查询之前提交的命令：git reflog //可以查看到近期提交的commit id
 把暂存区的修改撤销掉（unstage），重新放回工作区：git reset HEAD [文件名]
-丢弃工作区的修改：git checkout -- [文件名]
+丢弃工作区的修改或者删除的文件还原到工作区：git checkout -- [文件名]
+删除文件：git rm [文件名]
+关联远程仓库：git remote add origin [仓库地址]
 
 工作区和暂存区理解
 
