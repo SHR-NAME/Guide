@@ -16,6 +16,12 @@ git 回退版本：git reset --hard HEAD^ 或回退到指定commit id ep:git res
 由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令
 这样：git push origin master
 从远程克隆：git clone [远程仓库地址]
+切换分支：git checkout [分支名]
+创建并切换分支:git checkout -b [分支名] 相当于 git branch [分支名]；git checkout [分支名]
+查看当前分支：git branch
+删除分支:git branch -d [分支名]
+合并到当前分支：git merge [其他分支分支名]
+
 
 工作区和暂存区理解
 
@@ -25,3 +31,5 @@ git 回退版本：git reset --hard HEAD^ 或回退到指定commit id ep:git res
 Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。
 
 ![理解](http://www.liaoxuefeng.com/files/attachments/001384907702917346729e9afbf4127b6dfbae9207af016000/0)
+
+分支管理
