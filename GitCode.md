@@ -6,6 +6,7 @@
 查看当前仓库的状态：git status  //nothing to commit (working directory clean) 表示没有要提交的修改
 查看某个文件修改的差异：git diff [文件名]
 查看每次提交的历史：git log  //如果嫌输出的信息过多，可以添加--pretty=oneline
+查看分支的合并情况：git log --graph --pretty=oneline --abbrev-commit
 git 回退版本：git reset --hard HEAD^ 或回退到指定commit id ep:git reset --hard fb67e35
 查询之前提交的命令：git reflog //可以查看到近期提交的commit id
 把暂存区的修改撤销掉（unstage），重新放回工作区：git reset HEAD [文件名]
@@ -20,8 +21,9 @@ git 回退版本：git reset --hard HEAD^ 或回退到指定commit id ep:git res
 创建并切换分支:git checkout -b [分支名] 相当于 git branch [分支名]；git checkout [分支名]
 查看当前分支：git branch
 删除分支:git branch -d [分支名]
-合并到当前分支：git merge [其他分支分支名]
-
+合并到当前分支：git merge [其他分支分支名] ；git merge --no-ff -m "提交说明" dev
+合并分支时，加上--no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。
+存储工作空间：git stash //保存现场
 
 工作区和暂存区理解
 
@@ -32,4 +34,16 @@ Git的版本库里存了很多东西，其中最重要的就是称为stage（或
 
 ![理解](http://www.liaoxuefeng.com/files/attachments/001384907702917346729e9afbf4127b6dfbae9207af016000/0)
 
-分支管理
+分支策略
+
+在实际开发中，我们应该按照几个基本原则进行分支管理：
+
+首先，master分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；
+
+那在哪干活呢？干活都在dev分支上，也就是说，dev分支是不稳定的，到某个时候，比如1.0版本发布时，再把dev分支合并到master上，在master分支发布1.0版本；
+
+你和你的小伙伴们每个人都在dev分支上干活，每个人都有自己的分支，时不时地往dev分支上合并就可以了。
+
+所以，团队合作的分支看起来就像这样：
+
+![branch](http://www.liaoxuefeng.com/files/attachments/001384909239390d355eb07d9d64305b6322aaf4edac1e3000/0)
