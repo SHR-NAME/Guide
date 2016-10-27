@@ -12,6 +12,10 @@ git 回退版本：git reset --hard HEAD^ 或回退到指定commit id ep:git res
 丢弃工作区的修改或者删除的文件还原到工作区：git checkout -- [文件名]
 删除文件：git rm [文件名]
 关联远程仓库：git remote add origin [仓库地址]
+提交本地仓库代码到远程：git push -u origin master
+由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令
+这样：git push origin master
+从远程克隆：git clone [远程仓库地址]
 
 工作区和暂存区理解
 
